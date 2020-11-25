@@ -1,7 +1,12 @@
 echo "# react-ts-hoc-test" >> README.md
+
 git init
 git add README.md
+<!-- 提交暂存区 -->
 git commit -m "first commit"
-git branch -M main
+<!-- 创建分支 -->
+git branch -M master
+<!-- 添加远程仓库地址 -->
 git remote add origin https://github.com/DWL716/react-ts-hoc-test.git
-git push -u origin main
+<!-- push 到远程仓库 -->
+git push -u origin master
