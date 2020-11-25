@@ -1,5 +1,15 @@
-echo "# react-ts-hoc-test" >> README.md
+安装依赖
+yarn install  or   npm install
 
+运行项目
+yarn start    or   npm run start
+
+
+
+
+项目初始化/本地仓库和远程仓库连接
+<!-- 创建项目初始化的时候 -->
+echo "# react-ts-hoc-test" >> README.md
 git init
 git add README.md
 <!-- 提交暂存区 -->
