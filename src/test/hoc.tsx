@@ -1,3 +1,4 @@
+export default 1
 import React, { memo, PureComponent, createContext } from 'react';
 // import {withRouter} from 'react-router-dom'
 
@@ -19,6 +20,26 @@ const UserContext = createContext({
   love: -1,
 });
 
+// 高阶
+// Omit 为过滤 属性 / 第一个参数为传入的整体属性，第二个参数是需要过滤的属性
+// Omit 目前测试 3.～ 没有实现
+const noComponents = function<T> (Wrang: React.ComponentType<T>) {
+  return class extends PureComponent<Omit<T, keyof IHoc>> {
+    render() {
+      return (
+        <UserContext.Consumer>
+          {user => {
+            return <Wrang {...this.props as T} {...user} test='test'></Wrang>
+          }}
+        </UserContext.Consumer>
+      )
+    }
+  }
+
+}
+
+
+// 普通组件/结合 HOC 来合并的组件
 const EnHance: React.FC<IHoc & Ia> = memo(function (props) {
   return (
     <>
@@ -32,24 +53,6 @@ const EnHance: React.FC<IHoc & Ia> = memo(function (props) {
     </>
   )
 })
-// 高阶
-const noComponents = function<T> (Wrang: React.ComponentType<T>) {
-  return class extends PureComponent<Omit<T, keyof IHoc>> {
-
-    render() {
-
-      return (
-        <UserContext.Consumer>
-          {user => {
-            return <Wrang {...this.props as T} {...user} test='test'></Wrang>
-          }}
-        </UserContext.Consumer>
-      )
-    }
-  }
-
-}
-
 
 const NoCom = noComponents(EnHance)
 
