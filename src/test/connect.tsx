@@ -28,7 +28,7 @@ interface IStoreState {
   page: number
 }
 interface IDispatcherProps {
-  addNumber: (page: number) => any
+  addNumber: (page: number) => void
 }
 
 const mapStateToProps = (store: IStoreState): IStoreState => ({
